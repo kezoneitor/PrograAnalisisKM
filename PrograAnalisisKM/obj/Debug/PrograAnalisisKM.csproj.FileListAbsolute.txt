@@ -1,0 +1,6 @@
+C:\Users\ksca_\OneDrive - Estudiantes ITCR\TEC\Semestre II año 2017\Analisis\PrograAnalisisKM\PrograAnalisisKM\bin\Debug\PrograAnalisisKM.exe.config
+C:\Users\ksca_\OneDrive - Estudiantes ITCR\TEC\Semestre II año 2017\Analisis\PrograAnalisisKM\PrograAnalisisKM\bin\Debug\PrograAnalisisKM.exe
+C:\Users\ksca_\OneDrive - Estudiantes ITCR\TEC\Semestre II año 2017\Analisis\PrograAnalisisKM\PrograAnalisisKM\bin\Debug\PrograAnalisisKM.pdb
+C:\Users\ksca_\OneDrive - Estudiantes ITCR\TEC\Semestre II año 2017\Analisis\PrograAnalisisKM\PrograAnalisisKM\obj\Debug\PrograAnalisisKM.csprojResolveAssemblyReference.cache
+C:\Users\ksca_\OneDrive - Estudiantes ITCR\TEC\Semestre II año 2017\Analisis\PrograAnalisisKM\PrograAnalisisKM\obj\Debug\PrograAnalisisKM.exe
+C:\Users\ksca_\OneDrive - Estudiantes ITCR\TEC\Semestre II año 2017\Analisis\PrograAnalisisKM\PrograAnalisisKM\obj\Debug\PrograAnalisisKM.pdb
