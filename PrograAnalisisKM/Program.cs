@@ -9,6 +9,7 @@ namespace PrograAnalisisKM
     class Program
     {
         static int[][][] matriz;
+        static int[][][] matriz2;
 
         static void crearMatrizdeJuego(int n)
         {
@@ -104,6 +105,8 @@ namespace PrograAnalisisKM
             Console.ReadKey();
 
         }
+
+       
 
 
         static void Main(string[] args)
