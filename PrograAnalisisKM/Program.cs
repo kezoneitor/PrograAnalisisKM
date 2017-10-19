@@ -57,7 +57,7 @@ namespace PrograAnalisisKM
         {
 
             Random rand = new Random();
-
+            //holisman
         }
 
         static void imprimirMatriz(int n)
