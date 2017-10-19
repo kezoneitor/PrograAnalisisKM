@@ -9,12 +9,11 @@ namespace PrograAnalisisKM
     class Program
     {
         static int[][][] matriz;
-        static int[][][] matriz2;
+        static Random rand = new Random();
 
         static void crearMatrizdeJuego(int n)
         {
             matriz = new int[n][][];
-            Random rand = new Random();
             for (int i = 0; i < n; i++)
             {
                 matriz[i] = new int[n][];
@@ -56,9 +55,18 @@ namespace PrograAnalisisKM
 
         static void RevolverMatriz(int n)
         {
-
-            Random rand = new Random();
-            //holisman
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    int[] piezAux = new int[4];
+                    piezAux = matriz[i][j];
+                    int iAux = rand.Next(0,n);
+                    int jAux = rand.Next(0, n);
+                    matriz[i][j] = matriz[iAux][jAux];
+                    matriz[iAux][jAux] = piezAux;
+                }
+            }
         }
 
         static void imprimirMatriz(int n)
@@ -85,7 +93,6 @@ namespace PrograAnalisisKM
 
         static void rotarpieza(int[] Pieza)//llamamos la pieza que se quiere rotar
         {
-            Random rand = new Random();// funcion para el random
             int random = rand.Next(4);// elegimos un random para ver cuanto se va a rotar la pieza
             Console.WriteLine("Random= " + random);
             for (int a = 0; a < random; a++)// el ciclo que hara rotar la pieza las veces que se diga
@@ -96,13 +103,6 @@ namespace PrograAnalisisKM
                 Pieza[2] = copia2;
                 Pieza[3] = copia3;
             }
-            Console.WriteLine(
-                    "La pieza en la posicion 0 = " + Pieza[0] + "\n" +
-                    "La pieza en la posicion 1 = " + Pieza[1] + "\n" +
-                    "La pieza en la posicion 2 = " + Pieza[2] + "\n" +
-                    "La pieza en la posicion 3 = " + Pieza[3] + "\n"
-                 );
-            Console.ReadKey();
 
         }
 
@@ -111,8 +111,10 @@ namespace PrograAnalisisKM
 
         static void Main(string[] args)
         {
-            crearMatrizdeJuego(4);
-            imprimirMatriz(4);
+            crearMatrizdeJuego(3);
+            imprimirMatriz(3);
+            RevolverMatriz(3);
+            imprimirMatriz(3);
             for (int i = 0; i < matriz.Length; i++)
             {
                 for (int j = 0; j < matriz[i].Length; j++)
@@ -120,6 +122,7 @@ namespace PrograAnalisisKM
                     rotarpieza(matriz[i][j]);
                 }
             }
+            imprimirMatriz(3);
         }
     }
 }
