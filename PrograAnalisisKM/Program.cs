@@ -9,11 +9,11 @@ namespace PrograAnalisisKM
     class Program
     {
         static int[][][] matriz;
+        static Random rand = new Random();
 
         static void crearMatrizdeJuego(int n)
         {
             matriz = new int[n][][];
-            Random rand = new Random();
             for (int i = 0; i < n; i++)
             {
                 matriz[i] = new int[n][];
@@ -55,9 +55,18 @@ namespace PrograAnalisisKM
 
         static void RevolverMatriz(int n)
         {
-
-            Random rand = new Random();
-
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    int[] piezAux = new int[4];
+                    piezAux = matriz[i][j];
+                    int iAux = rand.Next(0,n);
+                    int jAux = rand.Next(0, n);
+                    matriz[i][j] = matriz[iAux][jAux];
+                    matriz[iAux][jAux] = piezAux;
+                }
+            }
         }
 
         static void imprimirMatriz(int n)
@@ -82,11 +91,38 @@ namespace PrograAnalisisKM
             Console.ReadKey();
         }
 
+        static void rotarpieza(int[] Pieza)//llamamos la pieza que se quiere rotar
+        {
+            int random = rand.Next(4);// elegimos un random para ver cuanto se va a rotar la pieza
+            Console.WriteLine("Random= " + random);
+            for (int a = 0; a < random; a++)// el ciclo que hara rotar la pieza las veces que se diga
+            {
+                int copia = Pieza[0], copia2 = Pieza[1], copia3 = Pieza[2], copia4 = Pieza[3];
+                Pieza[0] = copia4;
+                Pieza[1] = copia;
+                Pieza[2] = copia2;
+                Pieza[3] = copia3;
+            }
+
+        }
+
+       
+
 
         static void Main(string[] args)
         {
-            crearMatrizdeJuego(4);
-            imprimirMatriz(4);
+            crearMatrizdeJuego(3);
+            imprimirMatriz(3);
+            RevolverMatriz(3);
+            imprimirMatriz(3);
+            for (int i = 0; i < matriz.Length; i++)
+            {
+                for (int j = 0; j < matriz[i].Length; j++)
+                {
+                    rotarpieza(matriz[i][j]);
+                }
+            }
+            imprimirMatriz(3);
         }
     }
 }
