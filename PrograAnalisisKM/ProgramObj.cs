@@ -9,6 +9,7 @@ namespace PrograAnalisisKM
     class ProgramObj
     {
         static Pieza[][] matriz;
+        static Pieza[][] matrizResuelta;
         static Random rand = new Random();
 
         static void crearMatrizdeJuego(int n)
@@ -65,47 +66,76 @@ namespace PrograAnalisisKM
                     matriz[iAux][jAux] = piezAux;
                 }
             }
-        }
-
-        static void imprimirMatriz(int n)
-        {
-            string m = "";
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    m += "<" + matriz[i][j].getArr() + "," + matriz[i][j].getDer() + "," + matriz[i][j].getAbj() + "," + matriz[i][j].getIzq() + ">\t";
-                    if (j == n - 1)
-                        m += "\n";
-                }
-                m += "\n";
-            }
-            Console.Write(m);
-            Console.ReadKey();
-        }
-
-        static void rotarpieza(ref Pieza pieza, int rotar)//llamamos la pieza que se quiere rotar
-        {
-            for (int a = 0; a < rotar; a++)// el ciclo que hara rotar la pieza las veces que se diga
-            {
-                Pieza copia = new Pieza(pieza.getIzq(), pieza.getArr(),  pieza.getDer(), pieza.getAbj());
-                pieza = copia;
-            }
-        }
-
-        static void Main(string[] args)
-        {
-            crearMatrizdeJuego(3);
-            imprimirMatriz(3);
-            RevolverMatriz(3);
-            imprimirMatriz(3);
             for (int i = 0; i < matriz.Length; i++)
             {
                 for (int j = 0; j < matriz[i].Length; j++)
                 {
-                    rotarpieza(ref matriz[i][j], rand.Next(4));
+                    matriz[i][j].rotarN(rand.Next(4));
                 }
             }
+        }
+
+        static void imprimirMatriz(int n)
+        {
+            string top = "";
+            string mid = "";
+            string bot = "";
+            string all = "";
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (matriz[i][j].getArr() < 10)
+                    {
+                        top += "| \\  " + matriz[i][j].getArr() + " / |";
+                    }
+                    else
+                    {
+                        top += "| \\ " + matriz[i][j].getArr() + " / |";
+                    }
+                    if (matriz[i][j].getIzq() < 10 && matriz[i][j].getDer() < 10)
+                    {
+                        mid += "|  " + matriz[i][j].getIzq() + "   " + matriz[i][j].getDer() + " |";
+                    }
+                    else if (matriz[i][j].getIzq() < 10 && matriz[i][j].getDer() >= 10)
+                    {
+                        mid += "|  " + matriz[i][j].getIzq() + "  " + matriz[i][j].getDer() + " |";
+                    }
+                    else if (matriz[i][j].getIzq() >= 10 && matriz[i][j].getDer() < 10)
+                    {
+                        mid += "| " + matriz[i][j].getIzq() + "   " + matriz[i][j].getDer() + " |";
+                    }
+                    else
+                    {
+                        mid += "| " + matriz[i][j].getIzq() + "  " + matriz[i][j].getDer() + " |";
+                    }
+                    if (matriz[i][j].getAbj() < 10)
+                    {
+                        bot += "|_/__" + matriz[i][j].getAbj() + "_\\_|";
+                    }
+                    else
+                    {
+                        bot += "|_/_" + matriz[i][j].getAbj() + "_\\_|";
+                    }
+                }
+                all += top + "\n" + mid + "\n" + bot + "\n";
+                top = mid = bot = "";
+            }
+            Console.Write(all);
+            Console.ReadKey();
+            Console.WriteLine("____________________________");
+        }
+
+        static void resolverGenetico()
+        {
+
+        }
+
+        static void Main(string[] args)
+        {
+            //Creacion de la matriz inicial
+            crearMatrizdeJuego(3);
+            RevolverMatriz(3);
             imprimirMatriz(3);
         }
     }
